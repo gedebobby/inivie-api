@@ -59,6 +59,9 @@ use Illuminate\Support\Facades\Route;
     Route::post('inivie/jobs/{hire_id}',[InquiryAndPolicyController::class,'updateIniVieJobs']); // Update Ini Vie Jobs //
     Route::get('inivie/job-positions',[InquiryAndPolicyController::class,'getIniVieJobPositions']); // Get Ini Vie Job Positions //
     Route::post('inivie/job-positions',[InquiryAndPolicyController::class,'addIniVieJobPositions']); // Add Ini Vie Job Positions //
+    Route::get('inivie/job-positions/{job_position_id}',[InquiryAndPolicyController::class,'getIniVieJobPositionById']); // Add Ini Vie Job Positions //
+    Route::post('inivie/job-positions/{job_position_id}',[InquiryAndPolicyController::class,'updateIniVieJobPositions']); // Add Ini Vie Job Positions //
+
     Route::get('inivie/job-form',[InquiryAndPolicyController::class,'getIniVieJobForm']); // Get Ini Vie Job Form (all candidate) //
     Route::post('inivie/job-form',[InquiryAndPolicyController::class,'addIniVieJobForm']); // add Ini Vie Job Form//
     Route::get('inivie/candidate/{hire_id}',[InquiryAndPolicyController::class,'getHireCandidate']); // Get Ini Vie Hire Candidate //

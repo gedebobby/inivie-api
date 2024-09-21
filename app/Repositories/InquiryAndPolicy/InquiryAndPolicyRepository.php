@@ -103,6 +103,11 @@ class InquiryAndPolicyRepository implements InquiryAndPolicyInterface {
         $data = JobPositionModel::all();
         return $this->Success($data, 'Data Retrieved');
     }
+    
+    public function getIniVieJobPositionById($job_position_id){
+        $data = JobPositionModel::find($job_position_id);
+        return $this->Success($data, 'Data Retrieved');
+    }
 
     public function addIniVieJobPositions($request){
         $data = $request->only(['job_position']);
@@ -116,6 +121,21 @@ class InquiryAndPolicyRepository implements InquiryAndPolicyInterface {
             return $this->Error($msg, 500);
         }
         return $this->Success($stored_data, 'Data Added');
+    }
+
+    public function updateIniVieJobPositions($request, $job_position_id){
+        $data = $request->only(['job_position']);
+        DB::beginTransaction();
+        try {
+            $job_position = JobPositionModel::find($job_position_id);
+            $job_position->update($data);
+            DB::commit();
+        } catch (\Exception $e) {
+            $msg = $e->getMessage();
+            DB::rollback();
+            return $this->Error($msg, 500);
+        }
+        return $this->Success($data, 'Data Updated');  
     }
 
     public function getIniVieJobForm(){

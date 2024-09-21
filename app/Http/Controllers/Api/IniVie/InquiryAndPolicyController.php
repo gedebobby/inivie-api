@@ -51,9 +51,17 @@ class InquiryAndPolicyController extends Controller
     public function getIniVieJobPositions(){
         return $this->inquiry_policy->getIniVieJobPositions();
     }
+
+    public function getIniVieJobPositionById($job_position_id){
+        return $this->inquiry_policy->getIniVieJobPositionById($job_position_id);
+    }
     
     public function addIniVieJobPositions(Request $request){
         return $this->inquiry_policy->addIniVieJobPositions($request);
+    }
+
+    public function updateIniVieJobPositions(Request $request, $job_position_id){
+        return $this->inquiry_policy->updateIniVieJobPositions($request, $job_position_id);
     }
     
     public function getIniVieJobForm(){
